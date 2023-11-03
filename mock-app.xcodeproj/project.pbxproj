@@ -11,6 +11,10 @@
 		A4B545062AF417AE007476DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B545052AF417AE007476DF /* ContentView.swift */; };
 		A4B545082AF417B1007476DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4B545072AF417B1007476DF /* Assets.xcassets */; };
 		A4B5450B2AF417B1007476DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4B5450A2AF417B1007476DF /* Preview Assets.xcassets */; };
+		A4B545122AF41ED5007476DF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B545112AF41ED5007476DF /* LoginView.swift */; };
+		A4B545142AF41EE1007476DF /* LobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B545132AF41EE1007476DF /* LobbyView.swift */; };
+		A4B545182AF41F0D007476DF /* WebsocketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B545172AF41F0D007476DF /* WebsocketModel.swift */; };
+		A4B5451E2AF43337007476DF /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B5451D2AF43337007476DF /* Actions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		A4B545052AF417AE007476DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A4B545072AF417B1007476DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4B5450A2AF417B1007476DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A4B545112AF41ED5007476DF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A4B545132AF41EE1007476DF /* LobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyView.swift; sourceTree = "<group>"; };
+		A4B545172AF41F0D007476DF /* WebsocketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsocketModel.swift; sourceTree = "<group>"; };
+		A4B5451D2AF43337007476DF /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +59,14 @@
 		A4B545022AF417AE007476DF /* mock-app */ = {
 			isa = PBXGroup;
 			children = (
+				A4B5451C2AF432DF007476DF /* Models */,
+				A4B5451B2AF432D4007476DF /* Types */,
 				A4B545032AF417AE007476DF /* mock_appApp.swift */,
 				A4B545052AF417AE007476DF /* ContentView.swift */,
 				A4B545072AF417B1007476DF /* Assets.xcassets */,
 				A4B545092AF417B1007476DF /* Preview Content */,
+				A4B545112AF41ED5007476DF /* LoginView.swift */,
+				A4B545132AF41EE1007476DF /* LobbyView.swift */,
 			);
 			path = "mock-app";
 			sourceTree = "<group>";
@@ -65,6 +77,22 @@
 				A4B5450A2AF417B1007476DF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A4B5451B2AF432D4007476DF /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				A4B5451D2AF43337007476DF /* Actions.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		A4B5451C2AF432DF007476DF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A4B545172AF41F0D007476DF /* WebsocketModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +165,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4B545122AF41ED5007476DF /* LoginView.swift in Sources */,
+				A4B545142AF41EE1007476DF /* LobbyView.swift in Sources */,
+				A4B545182AF41F0D007476DF /* WebsocketModel.swift in Sources */,
+				A4B5451E2AF43337007476DF /* Actions.swift in Sources */,
 				A4B545062AF417AE007476DF /* ContentView.swift in Sources */,
 				A4B545042AF417AE007476DF /* mock_appApp.swift in Sources */,
 			);
