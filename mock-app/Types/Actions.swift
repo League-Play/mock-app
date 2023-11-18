@@ -14,6 +14,43 @@ class Action: Encodable {
     }
 }
 
+class UserInfoAction: Action {
+    var user: String
+    init(user: String) {
+        self.user = user
+        super.init(action: "UserInfo")
+    }
+    
+    func encodeToString() -> String? {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted // Optional for human-readable output
+
+        do {
+            let jsonData = try encoder.encode(self)
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                print(jsonString)
+                return jsonString
+            } else {
+                return nil
+            }
+        } catch {
+            print("Error encoding to JSON: \(error)")
+            return nil
+        }
+    }
+    
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(action, forKey: .action)
+        try container.encode(user, forKey: .user)
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case action
+        case user
+    }
+}
+
 class RedirectAction: Action {
     var user: String
     init(user: String) {

@@ -7,16 +7,21 @@
 
 import SwiftUI
 
+let mockUser = "user1"
 struct ContentView: View {
-    let mockUser = "user1"
-    @ObservedObject var websocket = WebsocketModel()
+    @ObservedObject var websocket = WebsocketModel(user: mockUser)
     @State var username = ""
     @State private var textInput = ""
     var body: some View {
         if websocket.flow == nil {
             ProgressView("Loading...")
                 .onAppear() {
-                    websocket.sendMessage(RedirectAction(user: mockUser).encodeToString()!)
+                    while (websocket.flow == nil) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                            websocket.sendMessage(RedirectAction(user: mockUser).encodeToString()!)
+                        }
+                        
+                    }
                 }
         } else if websocket.flow == "Home" {
             LoginView(username: $username)
