@@ -26,3 +26,22 @@ class Response: Decodable {
     }
 }
 
+class FlowResponse: Decodable {
+    var flow: String
+    
+    init(response: String) {
+        self.flow = response
+    }
+    
+    // Implement the initializer required by Decodable
+    // This initializer will be called during the decoding process
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        // Decode each property from the container
+        self.flow = try container.decode(String.self, forKey: .flow)
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case flow
+    }
+}

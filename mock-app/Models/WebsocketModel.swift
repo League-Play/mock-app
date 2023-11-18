@@ -47,6 +47,7 @@ class WebsocketModel: ObservableObject {
                         self.flow = nil
                         break
                     }
+                self.receiveMessage()
             }
         }
     }
@@ -61,6 +62,9 @@ class WebsocketModel: ObservableObject {
                 print("here")
                 sendUserInfo()
                 break;
+            case "FlowResponse":
+                let flowResponse = try JSONDecoder().decode(FlowResponse.self, from: message.data(using: .utf8)!)
+                flow = flowResponse.flow
             default:
                 print("default")
             }
