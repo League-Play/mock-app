@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let mockUser = "user1"
+let mockUser = "user3"
 struct ContentView: View {
     @ObservedObject var websocket = WebsocketModel(user: mockUser)
     @State var username = ""
@@ -27,8 +27,7 @@ struct ContentView: View {
             LoginView(username: $username)
                 .environmentObject(websocket)
         } else if websocket.flow == "Lobby" {
-            LobbyView()
-                .environmentObject(websocket)
+            LobbyView(websocket: websocket)
         } else if websocket.flow == "GameReport" {
             EmptyView()
         }

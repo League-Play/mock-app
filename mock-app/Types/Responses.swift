@@ -45,3 +45,47 @@ class FlowResponse: Decodable {
         case flow
     }
 }
+
+class JoinLobbyResponse: Decodable {
+    var username: String
+    init(response: String) {
+        self.username = response
+    }
+    
+    // Implement the initializer required by Decodable
+    // This initializer will be called during the decoding process
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        // Decode each property from the container
+        self.username = try container.decode(String.self, forKey: .username)
+
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case username
+    }
+}
+
+class ReadyResponse: Decodable {
+    var username: String
+    var isReady: Bool
+    init(response: String) {
+        self.username = response
+        self.isReady = false
+    }
+    
+    // Implement the initializer required by Decodable
+    // This initializer will be called during the decoding process
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        // Decode each property from the container
+        self.username = try container.decode(String.self, forKey: .username)
+        self.isReady = try container.decode(Bool.self, forKey: .isReady)
+
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case username
+        case isReady
+    }
+}

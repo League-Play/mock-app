@@ -6,10 +6,11 @@
 //
 
 import Foundation
-
+@MainActor
 class WebsocketModel: ObservableObject {
     @Published var messages = [String]()
     @Published var flow: String?
+    @Published var players: Set<Player> = []
     private var userId: String
     private var webSocketTask: URLSessionWebSocketTask?
     init(user: String) {
@@ -59,12 +60,21 @@ class WebsocketModel: ObservableObject {
             print(response.responseId)
             switch response.responseId {
             case "UserInfoRequest":
-                print("here")
                 sendUserInfo()
                 break;
             case "FlowResponse":
                 let flowResponse = try JSONDecoder().decode(FlowResponse.self, from: message.data(using: .utf8)!)
                 flow = flowResponse.flow
+            case "JoinLobbyResponse":
+                let joinLobbyResponse = try JSONDecoder().decode(JoinLobbyResponse.self, from: message.data(using: .utf8)!)
+                players.insert(Player(username: joinLobbyResponse.username, isReady: false))
+            case "ReadyResponse":
+                let readyResponse = try JSONDecoder().decode(ReadyResponse.self, from: message.data(using: .utf8)!)
+                if let index = players.firstIndex(where: { $0.username == readyResponse.username }) {
+                    if players[index].username == readyResponse.username {
+                        players[index].isReady = readyResponse.isReady
+                    }
+                }
             default:
                 print("default")
             }

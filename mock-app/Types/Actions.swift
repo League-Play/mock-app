@@ -127,10 +127,10 @@ class JoinLobbyAction: Action {
 
 class ReadyAction: Action {
     var username: String
-    var ready: Bool
-    init(username: String, ready: Bool) {
+    var isReady: Bool
+    init(username: String, isReady: Bool) {
         self.username = username
-        self.ready = ready
+        self.isReady = isReady
         super.init(action: "Ready")
     }
     func encodeToString() -> String? {
@@ -149,5 +149,18 @@ class ReadyAction: Action {
             print("Error encoding to JSON: \(error)")
             return nil
         }
+    }
+    
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(action, forKey: .action)
+        try container.encode(username, forKey: .username)
+        try container.encode(isReady, forKey: .isReady)
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case action
+        case username
+        case isReady
     }
 }
