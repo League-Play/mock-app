@@ -67,7 +67,7 @@ class WebsocketModel: ObservableObject {
                 flow = flowResponse.flow
             case "JoinLobbyResponse":
                 let joinLobbyResponse = try JSONDecoder().decode(JoinLobbyResponse.self, from: message.data(using: .utf8)!)
-                players.insert(Player(username: joinLobbyResponse.username, isReady: false))
+                players.insert(Player(username: joinLobbyResponse.username, isReady: joinLobbyResponse.isReady))
             case "ReadyResponse":
                 let readyResponse = try JSONDecoder().decode(ReadyResponse.self, from: message.data(using: .utf8)!)
                 if let index = players.firstIndex(where: { $0.username == readyResponse.username }) {

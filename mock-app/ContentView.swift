@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let mockUser = "user3"
+let mockUser = "user1"
 struct ContentView: View {
     @ObservedObject var websocket = WebsocketModel(user: mockUser)
     @State var username = ""

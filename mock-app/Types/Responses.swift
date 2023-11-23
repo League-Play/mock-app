@@ -48,8 +48,10 @@ class FlowResponse: Decodable {
 
 class JoinLobbyResponse: Decodable {
     var username: String
+    var isReady: Bool
     init(response: String) {
         self.username = response
+        self.isReady = false
     }
     
     // Implement the initializer required by Decodable
@@ -58,11 +60,13 @@ class JoinLobbyResponse: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         // Decode each property from the container
         self.username = try container.decode(String.self, forKey: .username)
+        self.isReady = try container.decode(Bool.self, forKey: .isReady)
 
     }
 
     enum CodingKeys: String, CodingKey {
         case username
+        case isReady
     }
 }
 
